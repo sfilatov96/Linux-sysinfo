@@ -1,0 +1,7 @@
+*/1 * * * * mpstat 2 5 | tail -n 1 > mpstat.log
+*/1 * * * * iostat -px | grep "sda" > iostat.log
+*/1 * * * * ss -t > tcp_conn.log
+*/1 * * * * ss -u > udp_conn.log
+*/1 * * * * df -ih | tail -n+2 > inodes.log
+*/1 * * * * df -h | tail -n+2 > disk_spaces.log 
+*/1 * * * * cat /proc/net/dev | tail -n+3 > network_loading.log
