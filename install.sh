@@ -1,4 +1,3 @@
-sudo su
 apt-get install apache2
 apt-get install nginx
 a2enmode cgi
