@@ -14,6 +14,6 @@ cat ports.conf > /etc/apache2/ports.conf
 a2ensite apache2-sysinfo
 service apache2 reload
 service apache2 restart
-service nginx restart
 crontab cron.bak
+service nginx restart
 
