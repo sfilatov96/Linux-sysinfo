@@ -1,5 +1,5 @@
-*/1 * * * * mpstat 2 5 | tail -n 1 > /var/log/mpstat.log
-*/1 * * * * iostat 2 6 -dx | tail -n 2 > /var/log/iostat.log
+*/1 * * * * mpstat 2 5 | tail -n 1 >> /var/log/mpstat.log
+*/1 * * * * iostat 2 6 -dx | tail -n 2 >> /var/log/iostat.log
 */1 * * * * ss -t > /var/log/tcp_conn.log
 */1 * * * * ss -u > /var/log/udp_conn.log
 */1 * * * * df -ih | tail -n+2 > /var/log/inodes.log

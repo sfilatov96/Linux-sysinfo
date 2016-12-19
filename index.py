@@ -10,9 +10,9 @@ from collections import Counter
 mpstat = []
 iostat = []
 mpstat_metrics = {}
-mpstat = check_output("awk '{ print $3,$4,$5,$6,$12; }' /var/log/mpstat.log",shell=True).replace("\n","").replace(",",".").split(" ")
+mpstat = check_output("awk '{ print $3,$4,$5,$6,$12; }' /var/log/mpstat.log | tail -n 2",shell=True).replace("\n","").replace(",",".").split(" ")
 iostat_titles = " r/s   w/s   await   util" 
-iostat = check_output("awk '{ print $4,$5,$10,$14; }' /var/log/iostat.log",shell=True).split("\n")
+iostat = check_output("awk '{ print $4,$5,$10,$14; }' /var/log/iostat.log | tail -n 2",shell=True).split("\n")
 tcp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/tcp_conn.log",shell=True).split("\n")
 udp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/udp_conn.log",shell=True).split("\n")
 inodes = check_output("awk '{ print $1,$4,$5; }' /var/log/inodes.log",shell=True)[:-1].split("\n")
