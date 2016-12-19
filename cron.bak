@@ -5,4 +5,4 @@
 */1 * * * * df -ih | tail -n+2 > /var/log/inodes.log
 */1 * * * * df -h | tail -n+2 > /var/log/disk_spaces.log 
 */1 * * * * cat /proc/net/dev | tail -n+3 > /var/log/network_loading.log
-@daily root tcpdump -G 15 -w /var/log/tcpdump.log
+
