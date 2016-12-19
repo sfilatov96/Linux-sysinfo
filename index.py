@@ -19,12 +19,12 @@ udp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/udp_conn.log",
 inodes = check_output("awk '{ print $1,$4,$5; }' /var/log/inodes.log",shell=True)[:-1].split("\n")
 free_spaces = check_output("awk '{ print $1,$4,$5; }' /var/log/disk_spaces.log",shell=True)[:-1].split("\n")
 tcp_stat = check_output("awk '{ print $1; }' /var/log/tcp_conn.log",shell=True)[:-1].split("\n")
-network_loading=check_output("awk '{ print $1,$2,$3,$10,$11; }' /var/log/network_loading.log",shell=True).split("\n")
+network_loading=check_output("awk '{ print $1,$2,$3,$10,$11; }' /var/log/network_loading.log",shell=True)[:-1].split("\n")
 nproc = int(check_output("nproc",shell=True))
 
 
 
-if mpstat:
+if mpstat or mpstat!='':
 	mpstat = map(float,mpstat)
 	mpstat_metrics['user(%)(us+ni)'] = mpstat[0]+mpstat[1]
 	mpstat_metrics['sys(%)'] = mpstat[2]
