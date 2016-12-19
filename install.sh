@@ -16,4 +16,4 @@ a2ensite apache2-sysinfo
 service apache2 reload
 service apache2 restart
 crontab cron.bak
-chmod 777 /var/log/tcpdump.log
+
