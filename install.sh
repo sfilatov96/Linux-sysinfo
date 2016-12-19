@@ -8,7 +8,7 @@ cp index.py /var/www/html/index.py
 chmod 777 /var/www/index.py
 chmod 777 /var/www/html/index.py
 cp apache2-sysinfo.conf /etc/apache2/sites-available/apache2-sysinfo.conf
-rm /etc/apache2/sites-enabled/default
+rm /etc/nginx/sites-enabled/default
 cp nginx-sysinfo.conf > /etc/apache2/sites-enabled/default
 cat ports.conf > /etc/apache2/ports.conf 
 service nginx restart
