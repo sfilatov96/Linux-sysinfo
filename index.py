@@ -24,8 +24,7 @@ nproc = int(check_output("nproc",shell=True))
 
 
 
-if mpstat or mpstat!='':
-	print(mpstat)
+if mpstat != ['']:
 
 	mpstat = map(float,mpstat)
 	mpstat_metrics['user(%)(us+ni)'] = mpstat[0]+mpstat[1]
@@ -44,7 +43,7 @@ print "<b>CLIENT_ADDR:</b>: %s</br>" % (os.environ['HTTP_X_REAL_IP'])
 print "<b>CLIENT_PORT:</b>: %s</br>" % (os.environ['HTTP_X_FORWARDER_FOR_PORT'])
 print "<b>NGINX_VERSION:</b>: %s</br>" % (os.environ['HTTP_X_NGX_VERSION'])
 
-if mpstat:
+if mpstat != ['']:
 	print "<table border='1' width='1000'>"
 
 	print "<tr><td>Load Average</td><td>"
