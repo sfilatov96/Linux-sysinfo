@@ -13,7 +13,7 @@ iostat = []
 mpstat_metrics = {}
 mpstat = check_output("awk '{ print $3,$4,$5,$6,$12; }' /var/log/mpstat.log | tail -n 1 ",shell=True).replace("\n","").replace(",",".").split(" ")
 iostat_titles = " r/s   w/s   await   util" 
-iostat = check_output("awk '{ print $4,$5,$10,$14; }' /var/log/iostat.log | tail ",shell=True).split("\n")
+iostat = check_output("awk '{ print $4,$5,$10,$14; }' /var/log/iostat.log | tail -n 1 ",shell=True).split("\n")
 tcp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/tcp_conn.log",shell=True).split("\n")
 udp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/udp_conn.log",shell=True).split("\n")
 inodes = check_output("awk '{ print $1,$4,$5; }' /var/log/inodes.log",shell=True)[:-1].split("\n")
@@ -25,6 +25,8 @@ nproc = int(check_output("nproc",shell=True))
 
 
 if mpstat or mpstat!='':
+	print(mpstat)
+
 	mpstat = map(float,mpstat)
 	mpstat_metrics['user(%)(us+ni)'] = mpstat[0]+mpstat[1]
 	mpstat_metrics['sys(%)'] = mpstat[2]
@@ -38,8 +40,8 @@ print "<html><body>"
 
 print "<b>NGINX_ADDR:</b>: %s</br>" % (os.environ['REMOTE_ADDR'])
 print "<b>NGINX_PORT:</b>: %s</br>" % (os.environ['REMOTE_PORT'])
-print "<b>CLIENT_PORT:</b>: %s</br>" % (os.environ['HTTP_X_REAL_IP'])
-print "<b>NGINX_VERSION:</b>: %s</br>" % (os.environ['HTTP_X_FORWARDER_FOR_PORT'])
+print "<b>CLIENT_ADDR:</b>: %s</br>" % (os.environ['HTTP_X_REAL_IP'])
+print "<b>CLIENT_PORT:</b>: %s</br>" % (os.environ['HTTP_X_FORWARDER_FOR_PORT'])
 print "<b>NGINX_VERSION:</b>: %s</br>" % (os.environ['HTTP_X_NGX_VERSION'])
 
 if mpstat:
