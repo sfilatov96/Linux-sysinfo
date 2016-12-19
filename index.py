@@ -10,15 +10,15 @@ from collections import Counter
 mpstat = []
 iostat = []
 mpstat_metrics = {}
-mpstat = check_output("awk '{ print $3,$4,$5,$6,$12; }' /home/sfilatov96/mpstat.log",shell=True).replace("\n","").replace(",",".").split(" ")
+mpstat = check_output("awk '{ print $3,$4,$5,$6,$12; }' /var/log/mpstat.log",shell=True).replace("\n","").replace(",",".").split(" ")
 iostat_titles = " r/s   w/s   await   util" 
-iostat = check_output("awk '{ print $4,$5,$10,$14; }' /home/sfilatov96/iostat.log",shell=True).split("\n")
-tcp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /home/sfilatov96/tcp_conn.log",shell=True).split("\n")
-udp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /home/sfilatov96/udp_conn.log",shell=True).split("\n")
-inodes = check_output("awk '{ print $1,$4,$5; }' /home/sfilatov96/inodes.log",shell=True)[:-1].split("\n")
-free_spaces = check_output("awk '{ print $1,$4,$5; }' /home/sfilatov96/disk_spaces.log",shell=True)[:-1].split("\n")
-tcp_stat = check_output("awk '{ print $1; }' /home/sfilatov96/tcp_conn.log",shell=True)[:-1].split("\n")
-network_loading=check_output("awk '{ print $1,$2,$3,$10,$11; }' /home/sfilatov96/network_loading.log",shell=True).split("\n")
+iostat = check_output("awk '{ print $4,$5,$10,$14; }' /var/log/iostat.log",shell=True).split("\n")
+tcp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/tcp_conn.log",shell=True).split("\n")
+udp_conn = check_output("awk '{ print $1,$2,$3,$4,$5; }' /var/log/udp_conn.log",shell=True).split("\n")
+inodes = check_output("awk '{ print $1,$4,$5; }' /var/log/inodes.log",shell=True)[:-1].split("\n")
+free_spaces = check_output("awk '{ print $1,$4,$5; }' /var/log/disk_spaces.log",shell=True)[:-1].split("\n")
+tcp_stat = check_output("awk '{ print $1; }' /var/log/tcp_conn.log",shell=True)[:-1].split("\n")
+network_loading=check_output("awk '{ print $1,$2,$3,$10,$11; }' /var/log/network_loading.log",shell=True).split("\n")
 nproc = int(check_output("nproc",shell=True))
 
 
