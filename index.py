@@ -118,14 +118,15 @@ if mpstat:
 	for i in free_spaces:
 		d = i.split(" ")
 		k = d[2]
-		k = int(k[:-1])
-		if d[0] not in ['/sys','/proc','/dev']:
-			if k > 90:
-				print "<p style='color:red'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
-			elif 80 < k < 90:
-				print "<p style='color:yellow'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
-			else:
-				print "<p style='color:green'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+		if k != '-':
+			k = int(k[:-1])
+			if d[0] not in ['/sys','/proc','/dev']:
+				if k > 90:
+					print "<p style='color:red'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+				elif 80 < k < 90:
+					print "<p style='color:yellow'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+				else:
+					print "<p style='color:green'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
 	print "</td></tr>"
 
 	print "<tr><td>Inodes</td><td>"
@@ -133,14 +134,15 @@ if mpstat:
 	for i in inodes:
 		d = i.split(" ")
 		k = d[2]
-		k = int(k[:-1])
-		if d[0] not in ['/sys','/proc','/dev']:
-			if k > 90:
-				print "<p style='color:red'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
-			elif 80 < k < 90:
-				print "<p style='color:yellow'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
-			else:
-				print "<p style='color:green'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+		if k != '-':
+			k = int(k[:-1])
+			if d[0] not in ['/sys','/proc','/dev']:
+				if k > 90:
+					print "<p style='color:red'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+				elif 80 < k < 90:
+					print "<p style='color:yellow'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
+				else:
+					print "<p style='color:green'>%s  -- %s -- %s</p>" % (d[0],d[1],d[2])
 	print "</td></tr>"
 
 
