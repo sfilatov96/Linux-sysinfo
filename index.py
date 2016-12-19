@@ -37,6 +37,9 @@ print "<html><body>"
 
 print "<b>NGINX_ADDR:</b>: %s</br>" % (os.environ['REMOTE_ADDR'])
 print "<b>NGINX_PORT:</b>: %s</br>" % (os.environ['REMOTE_PORT'])
+print "<b>CLIENT_PORT:</b>: %s</br>" % (os.environ['HTTP_X_REAL_IP'])
+print "<b>NGINX_VERSION:</b>: %s</br>" % (os.environ['HTTP_X_FORWARDER_FOR_PORT'])
+print "<b>NGINX_VERSION:</b>: %s</br>" % (os.environ['HTTP_X_NGX_VERSION'])
 
 
 print "<table border='1' width='1000'>"
