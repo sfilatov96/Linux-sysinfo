@@ -159,7 +159,7 @@ try:
 	else:
 		print "<h1>Данных пока нет, обновитесь(они появятся через минуту)</h1>"
 
-except CalledProcessError: 
+except Exception: 
 	print "<h1>Данных пока нет, обновитесь(они появятся через минуту)</h1>"
 
 print "</html></body>"
