@@ -1,3 +1,4 @@
+apt-get update
 apt-get install apache2
 apt-get install nginx
 apt-get install sysstat
@@ -7,7 +8,8 @@ cp index.py /var/www/html/index.py
 chmod 777 /var/www/index.py
 chmod 777 /var/www/html/index.py
 cp apache2-sysinfo.conf /etc/apache2/sites-available/apache2-sysinfo.conf
-cat nginx-sysinfo.conf > /etc/apache2/sites-enabled/default
+rm /etc/apache2/sites-enabled/default
+cp nginx-sysinfo.conf > /etc/apache2/sites-enabled/default
 cat ports.conf > /etc/apache2/ports.conf 
 service nginx restart
 a2ensite apache2-sysinfo
