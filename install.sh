@@ -1,8 +1,8 @@
 apt-get update
 apt-get -y install apache2
-apt-get -y install nginx
+apt-get -y install nginx-core
 apt-get -y install sysstat
-apt-get install python-minimal
+apt-get -y install python-minimal
 a2enmod cgi
 cp index.py /var/www/html/index.py
 chmod +x /var/www/html/index.py
